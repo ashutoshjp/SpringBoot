@@ -17,9 +17,11 @@ public class FibonacciServiceImpl implements FibonacciService {
 
 	public Fibonacci getFibonacci(Long input) {
 		// check if this exists in cache or database
+
 		Optional<Fibonacci> findByInput = fibonacciReposetory.findByInput(input);
 
 		if (!findByInput.isPresent()) {
+
 			String stringSeries = generateFibonacci(input);
 
 			// create new model
@@ -54,7 +56,7 @@ public class FibonacciServiceImpl implements FibonacciService {
 		return mostHitsInput;
 	}
 
-	//Generate Fibonacci
+	// Generate Fibonacci
 	private String generateFibonacci(Long input) {
 		{
 			String newS = "";
