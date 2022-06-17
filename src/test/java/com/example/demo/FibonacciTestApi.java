@@ -26,11 +26,16 @@ public class FibonacciTestApi {
 	@Test
 	public void inputForFibonacciTesting() throws Exception {
 		// Checking API with given input
-		mockMvc.perform(MockMvcRequestBuilders.get("/Fibonacci/{id}",5)
-				.contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.id", notNullValue()))
+		mockMvc.perform(MockMvcRequestBuilders.get("/Fibonacci/{id}", 5).contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andExpect(jsonPath("$.id", notNullValue()))
 				.andExpect(jsonPath("$.fibonacci", is("0,1,1,2,3")));
+
+	}
+
+	@Test
+	public void maxRequestedFibonacciInputTesting() throws Exception {
+		// Checking API with given input
+		mockMvc.perform(MockMvcRequestBuilders.get("/Fibonacci/{id}", "mc")).andExpect(status().isOk());
 
 	}
 
